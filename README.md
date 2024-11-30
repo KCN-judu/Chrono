@@ -5,7 +5,7 @@ an Electron based timer app. Clock, timer and stopwatch integrated
 doing layout and developing the feat of stopwatch.
 
 #Todo
-- --feat: clock--
+- ~~feat: clock~~
 - feat: timer
 - feat: stopwatch
 - feat: config file apply
