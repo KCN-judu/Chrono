@@ -1,10 +1,10 @@
 # Chrono
 an Electron based timer app. Clock, timer and stopwatch integrated
 
-#Stats
+# Stats
 doing layout and developing the feat of stopwatch.
 
-#Todo
+# Todo
 - ~~feat: clock~~
 - feat: timer
 - feat: stopwatch
