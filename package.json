@@ -1,0 +1,15 @@
+{
+	"name": "chrono",
+	"version": "1.0.0",
+	"main": "js/main.js",
+	"scripts": {
+		"test": "nix-shell --command \"electron .\""
+	},
+	"author": "",
+	"license": "MIT",
+	"description": "",
+	"dependencies": {
+		"electron": "^33.2.0"
+	},
+	"type": "module"
+}

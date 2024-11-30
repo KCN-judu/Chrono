@@ -1,0 +1,76 @@
+:root {
+	--dispBkgLight: rgb(150, 193, 230);
+	--dispBkgDark: rgb(41, 103, 157);
+	--textColor: aliceblue;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.display {
+	width: 300px;
+	height: 500px;
+	border-radius: 10px;
+
+	display: block;
+}
+
+.displayBox {
+	height: 90%;
+	background-color: var(--dispBkgDark);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.displayBox > * {
+	padding-top: 33%;
+	width: 300px;
+	display: none;
+}
+
+.timeDisplay h1 {
+	color: var(--textColor);
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-color: var(--dispBkgLight);
+}
+
+.toolBar {
+	height: 10%;
+	background-color: var(--dispBkgLight);
+	display: flex;
+
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	justify-content: space-around;
+	align-items: center;
+}
+
+.icon {
+	aspect-ratio: 1/1;
+	height: 80%;
+	background-color: var(--dispBkgDark);
+}
+
+.icon img {
+	max-height: 100%;
+}
+
+#clock {
+	display: block;
+}
+
+#clockText {
+	font-size: 350%;
+}

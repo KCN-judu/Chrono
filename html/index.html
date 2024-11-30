@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Chrono</title>
+		<link href="../css/general.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="display">
+			<div class="displayBox">
+				<div class="timeDisplay" id="clock">
+					<h1 id="clockText"></h1>
+				</div>
+				<div class="timeDisplay" id="timer">
+					<h1 id="timerText"></h1>
+					<div class="timerCtrlBar">
+						<div class="button" , id="start/pause">
+							<img src="../svg/start.svg" alt="start" />
+						</div>
+						<div class="button" , id="stop">
+							<img src="../svg/stop.svg" alt="stop" />
+						</div>
+					</div>
+					<div class="timerPreset">
+						<div class="button" , id="presetDefault"></div>
+					</div>
+				</div>
+				<div class="timeDisplay" id="stopwatch">
+					<h1 id="stopwatchText"></h1>
+					<div class="stopwatchCtrlBar">
+						<div class="button" , id="pin">
+							<img src="../svg/pin.svg" alt="pin" />
+						</div>
+						<div class="button" , id="start/pause">
+							<img src="../svg/start.svg" alt="start" />
+						</div>
+						<div class="button" , id="reset">
+							<img src="../svg/reset.svg" alt="reset" />
+						</div>
+					</div>
+				</div>
+				<div class="settingsDisplay" id="settings"></div>
+			</div>
+			<div class="toolBar">
+				<div class="icon" , id="clockIcon">
+					<img src="../svg/clock.svg" alt="clock" />
+				</div>
+				<div class="icon" , id="timerIcon">
+					<img src="../svg/timer.svg" alt="timer" />
+				</div>
+				<div class="icon" , id="stopwatchIcon">
+					<img src="../svg/stopwatch.svg" alt="stopwatch" />
+				</div>
+				<div class="icon" , id="settingsIcon">
+					<img src="../svg/settings.svg" alt="settings" />
+				</div>
+			</div>
+		</div>
+		<script type="module">
+			import { formatClock } from "../js/format.js";
+			const clock = document.getElementById("clockText");
+			clock.textContent = formatClock(8);
+			let intervalId = setInterval(() => {
+				clock.textContent = formatClock(8);
+			}, 1000);
+		</script>
+	</body>
+</html>
