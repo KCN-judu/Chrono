@@ -1,0 +1,9 @@
+.stopwatchCtrlBar {
+	height: 10%;
+	width: 60%;
+	background-color: var(--dispBkgLight);
+	display: flex;
+
+	justify-content: space-around;
+	align-items: center;
+}

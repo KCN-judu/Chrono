@@ -13,8 +13,8 @@ function createWindow() {
 	});
 
 	win.loadFile("html/index.html");
-	win.resizable = false;
-	//win.webContents.openDevTools();
+	//win.resizable = false;
+	win.webContents.openDevTools();
 
 	win.on("closed", () => {
 		win = null;

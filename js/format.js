@@ -42,11 +42,11 @@ export function formatStopwatch(milliseconds) {
 	const hours = Math.floor(milliseconds / 3600000);
 	const minutes = Math.floor((milliseconds % 3600000) / 60000);
 	const seconds = Math.floor((milliseconds % 60000) / 1000);
-	const ms = milliseconds % 1000;
+	const ms = (milliseconds % 1000) / 10;
 	return `${padZero(hours, 2)}:${padZero(minutes, 2)}:${padZero(
 		seconds,
 		2
-	)}.${padZero(ms, 3)}`;
+	)}.${padZero(ms, 2)}`;
 }
 
 /**

@@ -4,6 +4,10 @@
 		<meta charset="UTF-8" />
 		<title>Chrono</title>
 		<link href="../css/general.css" rel="stylesheet" />
+		<link href="../css/clock.css" rel="stylesheet" />
+		<link href="../css/timer.css" rel="stylesheet" />
+		<link href="../css/stopwatch.css" rel="stylesheet" />
+		<link href="../css/settings.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="display">
@@ -14,10 +18,10 @@
 				<div class="timeDisplay" id="timer">
 					<h1 id="timerText"></h1>
 					<div class="timerCtrlBar">
-						<div class="button" , id="start/pause">
+						<div class="button" , id="timerS/PBtn">
 							<img src="../svg/start.svg" alt="start" />
 						</div>
-						<div class="button" , id="stop">
+						<div class="button" , id="timerStopBtn">
 							<img src="../svg/stop.svg" alt="stop" />
 						</div>
 					</div>
@@ -28,13 +32,13 @@
 				<div class="timeDisplay" id="stopwatch">
 					<h1 id="stopwatchText"></h1>
 					<div class="stopwatchCtrlBar">
-						<div class="button" , id="pin">
+						<div class="button" , id="swPinBtn">
 							<img src="../svg/pin.svg" alt="pin" />
 						</div>
-						<div class="button" , id="start/pause">
+						<div class="button" , id="swS/PBtn">
 							<img src="../svg/start.svg" alt="start" />
 						</div>
-						<div class="button" , id="reset">
+						<div class="button" , id="swResetBtn">
 							<img src="../svg/reset.svg" alt="reset" />
 						</div>
 					</div>
@@ -63,6 +67,9 @@
 			let intervalId = setInterval(() => {
 				clock.textContent = formatClock(8);
 			}, 1000);
+
+			import { registerStopwatchLogic } from "../js/windowProc.js";
+			registerStopwatchLogic();
 		</script>
 	</body>
 </html>

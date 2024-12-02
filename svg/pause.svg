@@ -8,7 +8,7 @@
    fill="none"
    version="1.1"
    id="svg2"
-   sodipodi:docname="stop-svgrepo-com (1).svg"
+   sodipodi:docname="pause.svg"
    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -35,21 +35,21 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <rect
-     x="6"
-     y="5"
+     x="4.5"
+     y="3"
      width="4"
-     height="14"
+     height="18"
      rx="1"
      fill="#222222"
      id="rect1"
-     style="fill:#000000;fill-opacity:1" />
+     style="fill:#000000;fill-opacity:1;stroke-width:2.2678;stroke-dasharray:none" />
   <rect
-     x="14"
-     y="5"
+     x="15.50001"
+     y="3"
      width="4"
-     height="14"
+     height="18"
      rx="1"
      fill="#222222"
      id="rect2"
-     style="fill:#000000;fill-opacity:1" />
+     style="fill:#000000;fill-opacity:1;stroke-width:2.2678;stroke-dasharray:none" />
 </svg>
