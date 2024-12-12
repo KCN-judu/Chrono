@@ -10,52 +10,52 @@
 		<link href="../css/settings.css" rel="stylesheet" />
 	</head>
 	<body>
-		<div class="display">
-			<div class="displayBox">
-				<div class="timeDisplay" id="clock">
+		<div class="Content Box">
+			<div class="Content TabBox">
+				<div class="Content Tab" id="clockContent">
 					<h1 id="clockText"></h1>
 				</div>
-				<div class="timeDisplay" id="timer">
-					<h1 id="timerText"></h1>
-					<div class="timerCtrlBar">
-						<div class="button" , id="timerS/PBtn">
+				<div class="Content Tab" id="timerContent">
+					<h1 class="Text Timer"></h1>
+					<div class="Content Timer" , id="ctrlbar">
+						<div class="Button Timer" , id="start&pause_at_timer">
 							<img src="../svg/start.svg" alt="start" />
 						</div>
-						<div class="button" , id="timerStopBtn">
+						<div class="Button Timer" , id="stop">
 							<img src="../svg/stop.svg" alt="stop" />
 						</div>
 					</div>
-					<div class="timerPreset">
-						<div class="button" , id="presetDefault"></div>
+					<div class="Content Timer" , id="preset">
+						<div class="Button" , id="presetDefault"></div>
 					</div>
 				</div>
-				<div class="timeDisplay" id="stopwatch">
-					<h1 id="stopwatchText"></h1>
+				<div class="Content Tab" id="stopwatchContent">
+					<h1 class="Text Stopwatch"></h1>
 					<div class="stopwatchCtrlBar">
-						<div class="button" , id="swPinBtn">
+						<div class="Button Stopwatch" , id="pin">
 							<img src="../svg/pin.svg" alt="pin" />
 						</div>
-						<div class="button" , id="swS/PBtn">
+						<div class="Button Stopwatch" , id="start&pause_at_stopwatch">
 							<img src="../svg/start.svg" alt="start" />
 						</div>
-						<div class="button" , id="swResetBtn">
+						<div class="Button Stopwatch" , id="reset">
 							<img src="../svg/reset.svg" alt="reset" />
 						</div>
 					</div>
 				</div>
-				<div class="settingsDisplay" id="settings"></div>
+				<div class="settingsDisplay" id="settingsContent"></div>
 			</div>
-			<div class="toolBar">
-				<div class="icon" , id="clockIcon">
+			<div class="Content BottomBar">
+				<div class="Button BottomBar" , id="clockButton">
 					<img src="../svg/clock.svg" alt="clock" />
 				</div>
-				<div class="icon" , id="timerIcon">
+				<div class="Button BottomBar" , id="timerButton">
 					<img src="../svg/timer.svg" alt="timer" />
 				</div>
-				<div class="icon" , id="stopwatchIcon">
+				<div class="Button BottomBar" , id="stopwatchButton">
 					<img src="../svg/stopwatch.svg" alt="stopwatch" />
 				</div>
-				<div class="icon" , id="settingsIcon">
+				<div class="Button BottomBar" , id="settingsButton">
 					<img src="../svg/settings.svg" alt="settings" />
 				</div>
 			</div>
@@ -67,7 +67,6 @@
 			let intervalId = setInterval(() => {
 				clock.textContent = formatClock(8);
 			}, 1000);
-
 			import { registerStopwatchLogic } from "../js/windowProc.js";
 			registerStopwatchLogic();
 		</script>

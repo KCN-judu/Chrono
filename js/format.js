@@ -62,7 +62,6 @@ export function formatStopwatch(milliseconds) {
  */
 export function formatClock(timeZone = 0, timeFomat = "hh:mm/24") {
 	let GMToffset = new Date().getTimezoneOffset() / 60;
-	console.log(GMToffset);
 	GMToffset += timeZone;
 	const date = new Date(Date.now() + GMToffset * 60 * 60 * 1000);
 

@@ -1,22 +1,49 @@
 import { formatClock, formatTimer, formatStopwatch } from "./format.js";
+import { Button } from "./Classes/Button.js";
+import { Content } from "./Classes/Content.js";
+import { Text } from "./Classes/Text.js";
+
 let config = window.config;
 export function decodeFrontendConfig() {
 	if (config.frontend == undefined) return;
 }
 
-//function switch
-const clockBtn = document.getElementById("clockIcon");
-const timerBtn = document.getElementById("timerIcon");
-const stopwatchBtn = document.getElementById("stopwatchIcon");
-const settingsBtn = document.getElementById("settingsIcon");
-clockBtn.addEventListener("click", () => {});
-timerBtn.addEventListener("click", () => {});
-stopwatchBtn.addEventListener("click", () => {});
-settingsBtn.addEventListener("click", () => {});
+const [clockButton, timerButton, stopwatchButton, settingsButton] = [
+	"clockButton",
+	"timerButton",
+	"stopwatchButton",
+	"settingsButton",
+].map((id) => new Button(id));
+
+const [clockContent, timerContent, stopwatchContent, settingsContent] = [
+	"clockContent",
+	"timerContent",
+	"stopwatchContent",
+	"settingsContent",
+].map((id) => new Content(id));
+
+let currentModule = clockContent;
+
+[
+	[clockButton, clockContent],
+	[timerButton, timerContent],
+	[stopwatchButton, stopwatchContent],
+	[settingsButton, settingsContent],
+].forEach(([button, content]) =>
+	button.registerClickEvent(() => moduleSwitch(content))
+);
+
+function moduleSwitch(content) {
+	if (currentModule == content) return;
+	content.setDisplay("flex");
+	currentModule.setDisplay("none");
+	currentModule = content;
+}
 
 //clock
-const timeZone = config?.frontend?.clock?.timeZone;
-const timeFomat = config?.frontend?.clock?.timeFomat;
+const clockConfig = config?.frontend?.clock;
+const timeZone = clockConfig?.timeZone;
+const timeFomat = clockConfig?.timeFomat;
 const clockText = document.getElementById("clockText");
 function registerClockLogic() {
 	clockText.textContent = formatClock(timeZone, timeFomat);

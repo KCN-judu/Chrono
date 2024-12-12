@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Electron build artifacts
+/dist/
+/build/
+
+# Electron configuration files
+electron.json
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Temp files
+*.tmp
+
+.pnp.cjs
+.pnp.loader.mjs
+
+default.nix
+
+.yarn/
