@@ -4,7 +4,7 @@ export class HtmlElement {
 	 * @param {string} id - the id of the HTML element
 	 * @param {string|string[]} [classes] - the class or classes of the HTML element
 	 */
-	constructor(id, classes = undefined) {
+	constructor(id = undefined, classes = undefined) {
 		this.id = id;
 		this.classes = classes;
 		if (!classes) {

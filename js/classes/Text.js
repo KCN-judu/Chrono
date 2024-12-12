@@ -1,7 +1,7 @@
 import { HtmlElement } from "./HtmlElement.js";
 
 export class Text extends HtmlElement {
-	constructor(id, classes = undefined) {
+	constructor(id = undefined, classes = undefined) {
 		super(id, classes);
 	}
 

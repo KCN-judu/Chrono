@@ -1,6 +1,6 @@
 import { HtmlElement } from "./HtmlElement.js";
 export class Content extends HtmlElement {
-	constructor(id, classes = undefined) {
+	constructor(id = undefined, classes = undefined) {
 		super(id, classes);
 	}
 

@@ -1,7 +1,7 @@
 import { formatClock, formatTimer, formatStopwatch } from "./format.js";
-import { Button } from "./Classes/Button.js";
-import { Content } from "./Classes/Content.js";
-import { Text } from "./Classes/Text.js";
+import { Button } from "./classes/Button.js";
+import { Content } from "./classes/Content.js";
+import { Text } from "./classes/Text.js";
 
 let config = window.config;
 export function decodeFrontendConfig() {
@@ -30,7 +30,7 @@ let currentModule = clockContent;
 	[stopwatchButton, stopwatchContent],
 	[settingsButton, settingsContent],
 ].forEach(([button, content]) =>
-	button.registerClickEvent(() => moduleSwitch(content))
+	button.registerClickListener(() => moduleSwitch(content))
 );
 
 function moduleSwitch(content) {
@@ -40,93 +40,75 @@ function moduleSwitch(content) {
 	currentModule = content;
 }
 
+function logicDisable(intervalIds) {
+	if (Array.isArray(intervalIds)) {
+		intervalIds.forEach((id) => clearInterval(id));
+	} else clearInterval(intervalIds);
+}
+
 //clock
 const clockConfig = config?.frontend?.clock;
 const timeZone = clockConfig?.timeZone;
 const timeFomat = clockConfig?.timeFomat;
-const clockText = document.getElementById("clockText");
-function registerClockLogic() {
-	clockText.textContent = formatClock(timeZone, timeFomat);
+
+const clockText = new Text("clockText");
+
+export function clockEnable() {
+	clockText.replaceText(formatClock(timeZone, timeFomat));
 	return (intervalId = setInterval(() => {
-		clockText.textContent = formatClock(timeZone, timeFomat);
+		clockText.replaceText(formatClock(timeZone, timeFomat));
 	}, 1));
 }
 
-function cancelClockLogic(intervalId) {
-	clearInterval(intervalId);
-}
-
-function registerTimerLogic() {}
-
-function cancelTimerLogic() {}
+//timer
+export function timerEnable() {}
 
 //stopwatch
-let stopwatchTimeMs = 0;
+let msTimeCounter = 0;
+const stopwatchText = new Text("stopwatchText");
+const stopwatchButtonPin = new Button("pin");
+const stopwatchButtonStartPause = new Button("start&pause_at_stopwatch");
+const stopwatchButtonReset = new Button("reset");
 let stopwatchIntervalId,
 	stopwatchRenderIntervalId,
 	stopwatchIsRunning = false;
-const stopwatchText = document.getElementById("stopwatchText");
-const swPinBtn = document.getElementById("swPinBtn");
-const swSPBtn = document.getElementById("swS/PBtn");
-const swSPBtnSVG = swSPBtn.querySelector("img");
-const swResetBtn = document.getElementById("swResetBtn");
-swPinBtn.addEventListener("click", () => {});
-swSPBtn.addEventListener("click", () => {});
-swResetBtn.addEventListener("click", () => {});
-export function registerStopwatchLogic() {
-	stopwatchText.textContent = formatStopwatch(stopwatchTimeMs);
-	swSPBtn.addEventListener("click", swHandleSP);
+
+function stopwatchButtonStartPauseOnClick() {
+	stopwatchButtonStartPause.replaceIcon(
+		`../svg/${stopwatchIsRunning ? "pause" : "start"}.svg`
+	);
+	if (stopwatchIsRunning) {
+		stopwatchIsRunning = false;
+		logicDisable([stopwatchIntervalId, stopwatchRenderIntervalId]);
+		stopwatchText.replaceText(formatStopwatch(msTimeCounter));
+		stopwatchButtonPin.removeClickListener(stopwatchButtonPinOnClick);
+	} else {
+		stopwatchIsRunning = true;
+		stopwatchIntervalId = setInterval(() => {
+			msTimeCounter += 10;
+		}, 10);
+		stopwatchRenderIntervalId = setInterval(() => {
+			stopwatchText.replaceText(formatStopwatch(msTimeCounter));
+		}, 15);
+		stopwatchButtonPin.addClickListener(stopwatchButtonPinOnClick);
+		stopwatchButtonReset.addClickListener(stopwatchButtonResetOnClick, true);
+	}
 }
 
-function swHandleSP() {
-	if (stopwatchIsRunning) pauseSw();
-	else startSw();
-}
+function stopwatchButtonPinOnClick() {}
 
-function startSw() {
-	swSPBtnSVG.src = "../svg/pause.svg";
-	stopwatchIsRunning = true;
-	stopwatchIntervalId = setInterval(() => {
-		stopwatchTimeMs += 10;
-	}, 10);
-
-	stopwatchRenderIntervalId = setInterval(() => {
-		stopwatchText.textContent = formatStopwatch(stopwatchTimeMs);
-	}, 15);
-	swPinBtn.addEventListener("click", swHandlePin);
-	swResetBtn.addEventListener("click", swHandleReset);
-}
-
-function pauseSw() {
-	swSPBtnSVG.src = "../svg/start.svg";
+function stopwatchButtonResetOnClick() {
+	logicDisable([stopwatchIntervalId, stopwatchRenderIntervalId]);
+	if (stopwatchIsRunning)
+		stopwatchButtonPin.removeClickListener(stopwatchButtonPinOnClick);
+	stopwatchButtonStartPause.replaceIcon("../svg/start.svg");
 	stopwatchIsRunning = false;
-	clearInterval(stopwatchIntervalId);
-	clearInterval(stopwatchRenderIntervalId);
-	stopwatchText.textContent = formatStopwatch(stopwatchTimeMs);
-	swPinBtn.removeEventListener("click", swHandlePin);
+	msTimeCounter = 0;
+	stopwatchText.replaceText(formatStopwatch(msTimeCounter));
+	stopwatchButtonReset.removeClickListener(stopwatchButtonResetOnClick);
 }
 
-function swHandlePin() {}
-
-function swHandleReset() {
-	swSPBtnSVG.src = "../svg/start.svg";
-	clearInterval(stopwatchIntervalId);
-	clearInterval(stopwatchRenderIntervalId);
-	swPinBtn.removeEventListener("click", swHandlePin);
-	stopwatchTimeMs = 0;
-	stopwatchIsRunning = false;
-	stopwatchText.textContent = formatStopwatch(stopwatchTimeMs);
-	swResetBtn.removeEventListener("click", swHandleReset);
-}
-
-function cancelStopwatchLogic() {
-	swSPBtnSVG.src = "../svg/start.svg";
-	clearInterval(stopwatchIntervalId);
-	clearInterval(stopwatchRenderIntervalId);
-	stopwatchTimeMs = 0;
-	stopwatchText.textContent = formatStopwatch(stopwatchTimeMs);
-	stopwatchIsRunning = false;
-	swSPBtn.removeEventListener("click", swHandleSP);
-	swPinBtn.removeEventListener("click", swHandlePin);
-	swResetBtn.removeEventListener("click", swHandleReset);
+export function stopwatchEnable() {
+	stopwatchText.replaceText(formatStopwatch(msTimeCounter));
+	stopwatchButtonStartPause.addClickListener(stopwatchButtonStartPauseOnClick);
 }

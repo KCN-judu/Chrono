@@ -1,6 +1,6 @@
 import { HtmlElement } from "./HtmlElement.js";
 export class Button extends HtmlElement {
-	constructor(id, classes = undefined) {
+	constructor(id = undefined, classes = undefined) {
 		super(id, classes);
 	}
 
@@ -8,15 +8,19 @@ export class Button extends HtmlElement {
 	 * Registers a click event listener on the button element.
 	 * @param {Function} callback - The function to be executed when the button is clicked.
 	 */
-	registerClickEvent(callback) {
-		this.element.addEventListener("click", callback);
+	registerClickListener(callback, once = false) {
+		this.element.addEventListener(
+			"click",
+			callback,
+			once ? { once: true } : undefined
+		);
 	}
 
 	/**
 	 * Removes a click event listener from the button element.
 	 * @param {Function} callback - The function to be removed from the event listener.
 	 */
-	removeClickEvent(callback) {
+	removeClickListener(callback) {
 		this.element.removeEventListener("click", callback);
 	}
 
