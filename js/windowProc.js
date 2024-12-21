@@ -49,14 +49,14 @@ function logicDisable(intervalIds) {
 //clock
 const clockConfig = config?.frontend?.clock;
 const timeZone = clockConfig?.timeZone;
-const timeFomat = clockConfig?.timeFomat;
+const timeFormat = clockConfig?.timeFormat;
 export let clockIntervalId;
 const clockText = new Text("clockText");
 
 export function clockEnable() {
-	clockText.replaceText(formatClock(timeZone, timeFomat));
+	clockText.replaceText(formatClock(timeZone, timeFormat));
 	return (clockIntervalId = setInterval(() => {
-		clockText.replaceText(formatClock(timeZone, timeFomat));
+		clockText.replaceText(formatClock(timeZone, timeFormat));
 	}, 1));
 }
 
