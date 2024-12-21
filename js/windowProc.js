@@ -50,7 +50,7 @@ function logicDisable(intervalIds) {
 const clockConfig = config?.frontend?.clock;
 const timeZone = clockConfig?.timeZone;
 const timeFomat = clockConfig?.timeFomat;
-let clockIntervalId;
+export let clockIntervalId;
 const clockText = new Text("clockText");
 
 export function clockEnable() {

@@ -16,13 +16,14 @@ body {
 
 /*glob*/
 [class^="Text"] {
-	color: bisque;
+	color: var(--textColor);
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
 }
 
 .Button > img {
 	max-height: 100%;
+	stroke: var(--greyGreen);
 }
 
 .Button {
@@ -45,6 +46,7 @@ body {
 .Content.BottomBar {
 	height: 10%;
 	width: 100%;
+	background-color: var(--greyBackground);
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -54,7 +56,7 @@ body {
 .Content.Tab {
 	height: 100%;
 	width: 100%;
-	background-color: aquamarine;
+	background-color: var(--blackBackground);
 }
 
 /*default*/
