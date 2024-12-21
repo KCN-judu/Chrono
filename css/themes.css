@@ -1,4 +1,5 @@
 :root {
+	--transparent: rgba(0, 0, 0, 0);
 	--dispBkgLight: rgb(150, 193, 230);
 	--dispBkgDark: rgb(41, 103, 157);
 	--textColor: aliceblue;

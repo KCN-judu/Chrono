@@ -1,0 +1,14 @@
+.Content.Tab#timerContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.Content.Timer.CtrlBar {
+	height: 10%;
+	width: 40%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}

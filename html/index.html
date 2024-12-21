@@ -4,20 +4,16 @@
 		<meta charset="UTF-8" />
 		<title>Chrono</title>
 		<link href="../css/general.css" rel="stylesheet" />
-		<link href="../css/clock.css" rel="stylesheet" />
-		<link href="../css/timer.css" rel="stylesheet" />
-		<link href="../css/stopwatch.css" rel="stylesheet" />
-		<link href="../css/settings.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="Content Box">
 			<div class="Content TabBox">
 				<div class="Content Tab" id="clockContent">
-					<h1 id="clockText"></h1>
+					<h1 class="Text Clock" , id="clockText">00:00:00</h1>
 				</div>
 				<div class="Content Tab" id="timerContent">
-					<h1 class="Text Timer"></h1>
-					<div class="Content Timer" , id="ctrlbar">
+					<h1 class="Text Timer" , id="timerText">00:00:00</h1>
+					<div class="Content Timer CtrlBar">
 						<div class="Button Timer" , id="start&pause_at_timer">
 							<img src="../svg/start.svg" alt="start" />
 						</div>
@@ -30,8 +26,8 @@
 					</div>
 				</div>
 				<div class="Content Tab" id="stopwatchContent">
-					<h1 class="Text Stopwatch"></h1>
-					<div class="stopwatchCtrlBar">
+					<h1 class="Text Stopwatch" , id="stopwatchText">00:00:00</h1>
+					<div class="Content Stopwatch CtrlBar">
 						<div class="Button Stopwatch" , id="pin">
 							<img src="../svg/pin.svg" alt="pin" />
 						</div>
@@ -43,7 +39,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="settingsDisplay" id="settingsContent"></div>
+				<div class="Content Tab" id="settingsContent"></div>
 			</div>
 			<div class="Content BottomBar">
 				<div class="Button BottomBar" , id="clockButton">
@@ -61,14 +57,11 @@
 			</div>
 		</div>
 		<script type="module">
-			import { formatClock } from "../js/format.js";
-			const clock = document.getElementById("clockText");
-			clock.textContent = formatClock(8);
-			let intervalId = setInterval(() => {
-				clock.textContent = formatClock(8);
-			}, 1000);
-			import { registerStopwatchLogic } from "../js/windowProc.js";
-			registerStopwatchLogic();
+			import * as windowProc from "../js/windowProc.js";
+			windowProc.clockEnable();
+			windowProc.timerEnable();
+			windowProc.stopwatchEnable();
+			windowProc.settingsEnable();
 		</script>
 	</body>
 </html>

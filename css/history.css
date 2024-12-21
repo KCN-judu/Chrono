@@ -1,0 +1,79 @@
+div {
+	margin: 0px;
+	padding: 0px;
+}
+
+.display {
+	width: 300px;
+	height: 500px;
+	border-radius: 10px;
+
+	display: block;
+}
+
+.displayBox {
+	height: 90%;
+	background-color: var(--dispBkgDark);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+.displayBox > * {
+	padding-top: 33%;
+	width: 300px;
+	display: none;
+}
+
+.timeDisplay {
+	width: 100%;
+	justify-content: center;
+}
+
+.timeDisplay h1 {
+	color: var(--textColor);
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+	background-color: var(--dispBkgLight);
+}
+
+#clock {
+	display: none;
+}
+
+#timer {
+	display: none;
+}
+
+#stopwatch {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#settings {
+	display: none;
+}
+
+.toolBar {
+	height: 10%;
+	background-color: var(--dispBkgLight);
+	display: flex;
+
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+
+	justify-content: space-around;
+	align-items: center;
+}
+
+.Button {
+	aspect-ratio: 1/1;
+	height: 80%;
+	background-color: var(--dispBkgDark);
+}
+
+.Button img {
+	max-height: 100%;
+}

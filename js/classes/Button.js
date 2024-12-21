@@ -5,15 +5,12 @@ export class Button extends HtmlElement {
 	}
 
 	/**
-	 * Registers a click event listener on the button element.
-	 * @param {Function} callback - The function to be executed when the button is clicked.
+	 * Registers a click event listener to the button element.
+	 * @param {Function} callback - The function to be called when the button is clicked.
+	 * @param {boolean} [once=false] - Whether to remove the event listener after it is called.
 	 */
 	registerClickListener(callback, once = false) {
-		this.element.addEventListener(
-			"click",
-			callback,
-			once ? { once: true } : undefined
-		);
+		this.element.addEventListener("click", callback, { once });
 	}
 
 	/**

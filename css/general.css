@@ -1,87 +1,75 @@
 @import url("themes.css");
+@import url("clock.css");
+@import url("timer.css");
+@import url("stopwatch.css");
 
-body {
+* {
 	margin: 0;
 	padding: 0;
-	background-color: rgba(0, 0, 0, 0);
 }
 
-div {
-	margin: 0px;
-	padding: 0px;
-}
-
-.display {
+body {
+	background-color: var(--transparent);
 	width: 300px;
 	height: 500px;
-	border-radius: 10px;
-
-	display: block;
 }
 
-.displayBox {
-	height: 90%;
-	background-color: var(--dispBkgDark);
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-	display: flex;
-	justify-content: center;
-}
-
-.displayBox > * {
-	padding-top: 33%;
-	width: 300px;
-	display: none;
-}
-
-.timeDisplay {
-	width: 100%;
-	justify-content: center;
-}
-
-.timeDisplay h1 {
-	color: var(--textColor);
+/*glob*/
+[class^="Text"] {
+	color: bisque;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
-	background-color: var(--dispBkgLight);
 }
 
-#clock {
-	display: none;
+.Button > img {
+	max-height: 100%;
 }
 
-#timer {
-	display: none;
+.Button {
+	height: 80%;
+	aspect-ratio: 1/1;
 }
 
-#stopwatch {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+/*first layer*/
+.Content.Box {
+	width: 300px;
+	height: 500px;
 }
 
-#settings {
-	display: none;
+/*second layer*/
+.Content.TabBox {
+	height: 90%;
+	width: 100%;
 }
 
-.toolBar {
+.Content.BottomBar {
 	height: 10%;
-	background-color: var(--dispBkgLight);
+	width: 100%;
 	display: flex;
-
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-
 	justify-content: space-around;
 	align-items: center;
 }
 
-.Button {
-	aspect-ratio: 1/1;
-	height: 80%;
-	background-color: var(--dispBkgDark);
+/*third layer*/
+.Content.Tab {
+	height: 100%;
+	width: 100%;
+	background-color: aquamarine;
 }
 
-.Button img {
-	max-height: 100%;
+/*default*/
+.Content.Tab#clockContent {
+	display: flex;
+}
+
+.Content.Tab#timerContent {
+	display: none;
+}
+
+.Content.Tab#stopwatchContent {
+	display: none;
+}
+
+.Content.Tab#settingsContent {
+	display: none;
 }

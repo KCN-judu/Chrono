@@ -50,12 +50,12 @@ function logicDisable(intervalIds) {
 const clockConfig = config?.frontend?.clock;
 const timeZone = clockConfig?.timeZone;
 const timeFomat = clockConfig?.timeFomat;
-
+let clockIntervalId;
 const clockText = new Text("clockText");
 
 export function clockEnable() {
 	clockText.replaceText(formatClock(timeZone, timeFomat));
-	return (intervalId = setInterval(() => {
+	return (clockIntervalId = setInterval(() => {
 		clockText.replaceText(formatClock(timeZone, timeFomat));
 	}, 1));
 }
@@ -74,9 +74,6 @@ let stopwatchIntervalId,
 	stopwatchIsRunning = false;
 
 function stopwatchButtonStartPauseOnClick() {
-	stopwatchButtonStartPause.replaceIcon(
-		`../svg/${stopwatchIsRunning ? "pause" : "start"}.svg`
-	);
 	if (stopwatchIsRunning) {
 		stopwatchIsRunning = false;
 		logicDisable([stopwatchIntervalId, stopwatchRenderIntervalId]);
@@ -90,9 +87,15 @@ function stopwatchButtonStartPauseOnClick() {
 		stopwatchRenderIntervalId = setInterval(() => {
 			stopwatchText.replaceText(formatStopwatch(msTimeCounter));
 		}, 15);
-		stopwatchButtonPin.addClickListener(stopwatchButtonPinOnClick);
-		stopwatchButtonReset.addClickListener(stopwatchButtonResetOnClick, true);
+		stopwatchButtonPin.registerClickListener(stopwatchButtonPinOnClick);
+		stopwatchButtonReset.registerClickListener(
+			stopwatchButtonResetOnClick,
+			true
+		);
 	}
+	stopwatchButtonStartPause.replaceIcon(
+		`../svg/${stopwatchIsRunning ? "pause" : "start"}.svg`
+	);
 }
 
 function stopwatchButtonPinOnClick() {}
@@ -105,10 +108,13 @@ function stopwatchButtonResetOnClick() {
 	stopwatchIsRunning = false;
 	msTimeCounter = 0;
 	stopwatchText.replaceText(formatStopwatch(msTimeCounter));
-	stopwatchButtonReset.removeClickListener(stopwatchButtonResetOnClick);
 }
 
 export function stopwatchEnable() {
 	stopwatchText.replaceText(formatStopwatch(msTimeCounter));
-	stopwatchButtonStartPause.addClickListener(stopwatchButtonStartPauseOnClick);
+	stopwatchButtonStartPause.registerClickListener(
+		stopwatchButtonStartPauseOnClick
+	);
 }
+
+export function settingsEnable() {}
